@@ -7,9 +7,9 @@ inverse_logit <- function(value){
 }
 
 #   -----------------------------------------------------------------------
-# Probability to be in category j given input variables/ covariates for person i, xixi
+# Probability to be in category j given input variables/ covariates for person i, xi
 # P(Yi=j|xi)=P(Yi???j|xi)???P(Yi???j???1|xi)P(Yi=j|xi)=P(Yi???j|xi)???P(Yi???j???1|xi)
-# where P(Yi???j|xi)=exp(??j+??Txi)(1+exp(??j+??Txi))P(Yi???j|xi)=exp(??j+??Txi)(1+exp(??j+??Txi))
+# where P(Yi???j|xi)=exp(a_j+b^Txi)(1+exp(a_j+b^Txi))P(Yi???j|xi)=exp(a_j+b^Txi)(1+exp(a_j+b^Txi))
 #   -----------------------------------------------------------------------
 prob_j         <- function(a, j, b, x_i, min_obs_resp, max_obs_resp){
   
