@@ -7,9 +7,9 @@ inverse_logit <- function(value){
 }
 
 #   -----------------------------------------------------------------------
-# Probability to be in category j given input variables/ covariates for person i, xi
-# P(Y_i=j|xi)=P(Y_i<=j|xi)−P(Y_i<=j−1|x_i)
-# where P(Y_i<=j|x_i)=exp(a_j+b^Txi)(1+exp(a_j+b^Tx_i))P(Y_i<=j|x_i)=exp(a_j+b^Tx_i)(1+exp(a_j+b^Tx_i))
+# Probability to be in category j given input variables/ covariates for person i, x_i
+# P(Y_i=j|x_i)=P(Y_i<=j|x_i)−P(Y_i<=j−1|x_i)
+# where P(Y_i<=j|x_i)=exp(a_j+b^Tx_i) / (1+exp(a_j+b^Tx_i))
 #   -----------------------------------------------------------------------
 prob_j         <- function(a, j, b, x_i, min_obs_resp, max_obs_resp){
   
@@ -18,7 +18,7 @@ prob_j         <- function(a, j, b, x_i, min_obs_resp, max_obs_resp){
     return(inverse_logit(a[z] + x_i %*% b))
   
   
-  # return probability of being in category j is conditioned by the function "log_prob"
+  # return probability of being in category j is conditioned by the function "prob"
   if(j == min_obs_resp)
     return(prob(j))
   else if(j == max_obs_resp)
