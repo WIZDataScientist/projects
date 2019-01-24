@@ -20,11 +20,11 @@ prob_j         <- function(a, j, b, x_i, min_obs_resp, max_obs_resp){
   
   # return probability of being in category j is conditioned by the function "prob"
   if(j == min_obs_resp)
-    return(prob(j))
+    return(prob(j))             # since a_0 = -infty, for efficiency
   else if(j == max_obs_resp)
-    return(1 - prob(j-1))
+    return(1 - prob(j-1))       # since a_J =  infty, for efficiency
   else
-    return(prob(j) - prob(j-1))
+    return(prob(j) - prob(j-1)) # this is the eq. 
   
 }
 
